@@ -7,7 +7,27 @@ import (
 )
 
 func logMessages(chEmails, chSms chan string) {
-	// ?
+	smsDone, emailDone := false, false
+	for {
+		select {
+		case email, ok := <-chEmails:
+			if ok {
+				logEmail(email)
+			} else {
+				emailDone = true
+			}
+
+		case sms, ok := <-chSms:
+			if ok {
+				logSms(sms)
+			} else {
+				smsDone = true
+			}
+		}
+		if smsDone && emailDone {
+			break
+		}
+	}
 }
 
 // TEST SUITE - Don't touch below this line

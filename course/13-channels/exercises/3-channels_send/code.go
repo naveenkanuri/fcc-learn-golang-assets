@@ -6,7 +6,10 @@ import (
 )
 
 func waitForDbs(numDBs int, dbChan chan struct{}) {
-	// ?
+	for i := 0; i < numDBs; i++ {
+		<-dbChan
+		fmt.Println(fmt.Sprintf("Received db signal %v", i+1))
+	}
 }
 
 // don't touch below this line

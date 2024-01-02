@@ -3,6 +3,8 @@ package main
 import "fmt"
 
 type messageToSend struct {
+	phoneNumber int64
+	message     string
 }
 
 // don't edit below this line

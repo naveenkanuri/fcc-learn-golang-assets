@@ -5,11 +5,20 @@ import (
 )
 
 func (e email) cost() float64 {
-	// ?
+	//numChars := 0
+	//for _, _ = range e.body {
+	//	numChars++
+	//}
+	numChars := len(e.body)
+	if e.isSubscribed {
+		return float64(numChars) * 0.01
+	} else {
+		return float64(numChars) * 0.05
+	}
 }
 
 func (e email) print() {
-	// ?
+	fmt.Println(e.body)
 }
 
 // don't touch below this line

@@ -3,7 +3,18 @@ package main
 import "fmt"
 
 func createMatrix(rows, cols int) [][]int {
-	// ?
+	rows_ := make([][]int, rows)
+	for i, _ := range rows_ {
+		cols_ := make([]int, cols)
+		rows_[i] = cols_
+	}
+	for i, _ := range rows_ {
+		for j, _ := range rows_[i] {
+			rows_[i][j] = i * j
+		}
+	}
+	return rows_
+
 }
 
 // dont edit below this line
